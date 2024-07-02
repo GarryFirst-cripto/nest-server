@@ -2,6 +2,10 @@ import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { UsersModule } from './users/users.module';
 import { ConfigModule } from '@nestjs/config';
+import { RolesModule } from './roles/roles.module';
+import { User } from './users/users.model';
+import { Role } from './roles/roles.model';
+import { UserRoles } from './roles/user-roles.model';
 
 @Module({
   controllers: [],
@@ -17,10 +21,11 @@ import { ConfigModule } from '@nestjs/config';
       username: process.env.POSTGRESS_USER,
       password: process.env.POSTGRESS_PASSWORD,
       database: process.env.POSTGRESS_DB,
-      models: [],
+      models: [User, Role, UserRoles],
       autoLoadModels: true
     }),
     UsersModule,
+    RolesModule,
   ]
 })
 
