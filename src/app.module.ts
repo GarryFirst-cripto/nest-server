@@ -8,6 +8,9 @@ import { Role } from './roles/roles.model';
 import { UserRoles } from './roles/user-roles.model';
 import { AuthModule } from './auth/auth.module';
 import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
+import { PostsModule } from './posts/posts.module';
+import { Post } from './posts/posts.model';
+import { FilesModule } from './files/files.module';
 
 @Module({
   controllers: [],
@@ -23,12 +26,14 @@ import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
       username: process.env.POSTGRESS_USER,
       password: process.env.POSTGRESS_PASSWORD,
       database: process.env.POSTGRESS_DB,
-      models: [User, Role, UserRoles],
+      models: [User, Role, UserRoles, Post],
       autoLoadModels: true
     }),
     UsersModule,
     RolesModule,
     AuthModule,
+    PostsModule,
+    FilesModule,
   ]
 })
 
