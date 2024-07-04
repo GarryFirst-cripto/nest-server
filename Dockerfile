@@ -6,6 +6,10 @@ RUN npm install
 COPY . .
 
 RUN npm run build
-EXPOSE 5000
+
+ARG PORT
+ENV PORT=${PORT}
+
+EXPOSE ${PORT}
 CMD ["npm", "run", "start:dev"]
 
